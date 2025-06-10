@@ -1,0 +1,128 @@
+IndentWidth: 4
+ColumnLimit: 80
+
+# void foo() // Good
+# {
+#   // code
+# }
+#
+# void foo() { // bad
+#   // code
+# }
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterExternBlock: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: true
+  # void foo() // Good
+  # {}
+  # void foo() // Bad
+  # {
+  # }
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+
+# Make function definitions always span at least four lines when outside of
+# class definition.
+#     void foo(int a, int b) // Good
+#     {
+#         // code
+#     }
+#
+#     void foo(int a, int b) // Bad
+#     { // code }
+#
+#     void foo(int a, int b) { // code } // Bad
+AllowShortFunctionsOnASingleLine: Inline
+
+# References and pointers next to the type, not the variable name.
+#     int* a; // Good
+#     int *a; // Bad
+PointerAlignment: Left
+
+# Empty codeblocks in one line
+#     Foo() {} // Good
+#     Foo() // Good 
+#     {}
+#     Foo() // Bad
+#     {
+#     }
+AllowShortBlocksOnASingleLine: Always
+SpaceInEmptyBlock: false
+
+# Sort includes, group according to surrounding type
+SortIncludes: true
+IncludeCategories:
+  - Regex: '^<.*\.h>'
+    Priority: 1
+  - Regex: '^"'
+    Priority: 2
+
+# Empty line between includes using <> and includes using ""
+IncludeBlocks: Regroup
+
+# Foo::Foo() : bar(), baz() {} // Bad
+#
+# Foo::Foo() // Good
+#     : bar()
+#     , baz() 
+# {}
+BreakConstructorInitializers: BeforeComma
+
+# void foo(int a, // Good
+#          int bbbbbbbbbbbbbbbbb,
+#          int c)
+#
+# void foo(int a, int bbbbbbbbbbbbbbbbb, // Bad
+#          int c)
+BinPackParameters: false
+
+# namespace Foo // Good
+# {
+#   namespace Bar {}
+# }
+#
+# namespace Foo { namespace Bar // Bad
+#   {
+#
+#   }
+# }
+CompactNamespaces: false
+
+# namespace Foo // Good
+# {
+#   class Bar {};
+# }
+#
+# namespace Foo // Bad
+# {
+# class Bar {};
+# }
+NamespaceIndentation: All
+
+# if (true) // Good
+# {
+#   cout << "" << endl;
+# }
+#
+# if (true) // Bad
+# {
+#
+#   cout << "" << endl;
+# }
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# template <typename T> // Good
+# class Foo {}
+#
+# template <typename T> class Foo {} // Bad
+AlwaysBreakTemplateDeclarations: true
