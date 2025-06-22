@@ -4,8 +4,5 @@ fi
 
 source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 
-antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh
-source ~/.zsh_plugins.zsh
-
-antidote load
-
+antidote bundle <~/.zshrc.d/.zsh_plugins.txt >~/.zshrc.d/.zsh_plugins.zsh
+source ~/.zshrc.d/.zsh_plugins.zsh

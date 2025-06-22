@@ -2,14 +2,14 @@ function zvm_config() {
     ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
 }
 
-source ~/.antidote.zsh
-source ~/.zsh_alias.zsh
+source ~/.zshrc.d/.antidote.zsh
+source ~/.zshrc.d/.zsh_alias.zsh
 
 path+=("/snap/bin")
 path+=("/home/viktor/.local/share/nvim/mason/bin")
 path+=("/home/viktor/.local/bin")
 
-HISTFILE=~/.zsh_history
+HISTFILE=~/.zshrc.d/.zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
@@ -21,25 +21,15 @@ alias history="history 0"
 
 setopt autocd              # change directory just by typing its name
 setopt correct             # auto correct mistakes
-setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
 setopt nonomatch           # hide error message if there is no match for the pattern
 setopt notify              # report the status of background jobs immediately
 setopt numericglobsort     # sort filenames numerically when it makes sense
 setopt promptsubst         # enable command substitution in prompt
 
-bindkey -v                                        # emacs key bindings
-bindkey ' ' magic-space                           # do history expansion on space
-bindkey '^U' backward-kill-line                   # ctrl + U
-bindkey '^[[3;5~' kill-word                       # ctrl + Supr
-bindkey '^[[3~' delete-char                       # delete
-bindkey '^[[1;5C' forward-word                    # ctrl + ->
-bindkey '^[[1;5D' backward-word                   # ctrl + <-
-bindkey '^[[5~' beginning-of-buffer-or-history    # page up
-bindkey '^[[6~' end-of-buffer-or-history          # page down
-bindkey '^[[H' beginning-of-line                  # home
-bindkey '^[[F' end-of-line                        # end
-bindkey '^[[Z' reverse-menu-complete              # shift + tab to cycle through completion options in reverse
+bindkey -v                                        # vim key bindings
+bindkey '^[[Z' reverse-menu-complete
+bindkey '\el' autosuggest-accept
 
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
