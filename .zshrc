@@ -11,6 +11,9 @@ function zvm_after_init() {
 source ~/.zshrc.d/.antidote.zsh
 source ~/.zshrc.d/.zsh_alias.zsh
 
+export EDITOR=vim
+export VISUAL=vim
+
 path+=("/snap/bin")
 path+=("/home/viktor/.local/share/nvim/mason/bin")
 path+=("/home/viktor/.local/bin")
