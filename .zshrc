@@ -64,19 +64,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-
-# Lazy-load SDKMAN for faster shell startup
-export SDKMAN_DIR="$HOME/.sdkman"
-sdk() {
-  unset -f sdk java gradle mvn kotlin
-  [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-  sdk "$@"
-}
-java() { sdk; java "$@"; }
-gradle() { sdk; gradle "$@"; }
-mvn() { sdk; mvn "$@"; }
-kotlin() { sdk; kotlin "$@"; }
-
 # Lazy-load nvm for faster shell startup
 export NVM_DIR="$HOME/.nvm"
 nvm() {
