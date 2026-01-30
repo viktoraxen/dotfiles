@@ -44,7 +44,11 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 autoload -Uz compinit
-compinit -d ~/.cache/zcompdump
+if [[ -n ~/.cache/zcompdump(#qN.mh+24) ]]; then
+  compinit -d ~/.cache/zcompdump
+else
+  compinit -C -d ~/.cache/zcompdump
+fi
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
@@ -61,9 +65,17 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# Lazy-load SDKMAN for faster shell startup
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk() {
+  unset -f sdk java gradle mvn kotlin
+  [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+  sdk "$@"
+}
+java() { sdk; java "$@"; }
+gradle() { sdk; gradle "$@"; }
+mvn() { sdk; mvn "$@"; }
+kotlin() { sdk; kotlin "$@"; }
 
 # Lazy-load nvm for faster shell startup
 export NVM_DIR="$HOME/.nvm"

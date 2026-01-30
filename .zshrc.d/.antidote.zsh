@@ -4,5 +4,8 @@ fi
 
 source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 
-antidote bundle <~/.zshrc.d/.zsh_plugins.txt >~/.zshrc.d/.zsh_plugins.zsh
-source ~/.zshrc.d/.zsh_plugins.zsh
+zsh_plugins=~/.zshrc.d/.zsh_plugins
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
+fi
+source ${zsh_plugins}.zsh
