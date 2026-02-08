@@ -13,7 +13,7 @@ alias cpprun='~/dev/cpp-template/run.sh'
 
 alias nvide='(nvim --headless --listen localhost:6666 &) && neovide.exe --server localhost:6666'
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Git aliases (replaces ohmyzsh/git plugin)
 alias g='git'

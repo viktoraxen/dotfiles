@@ -1,12 +1,11 @@
-zpm-zsh/colors
-zpm-zsh/colorize
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:plugins/git
 
 mafredri/zsh-async
 sindresorhus/pure
 
 jeffreytse/zsh-vi-mode
 
-zsh-users/zsh-syntax-highlighting kind:defer
-zsh-users/zsh-autosuggestions kind:defer
-zsh-users/zsh-completions kind:defer
-zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
